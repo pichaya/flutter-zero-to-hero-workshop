@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:work_shop_1/models/email.dart';
 import 'package:work_shop_1/screens/inbox/widgets/email_card.dart';
+import 'package:work_shop_1/screens/email_detail/email_detail_page.dart';
 
 class InboxPage extends StatefulWidget {
   InboxPage({Key key, this.title}) : super(key: key);
@@ -15,6 +16,15 @@ class _InboxPageState extends State<InboxPage> {
   List<Email> emails = List<Email>();
 
   void _composeEmail() {}
+
+  void _viewEmailDetail(index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => EmailDetailPage(email: emails[index]),
+      ),
+    );
+  }
 
   @override
   void initState() {
@@ -94,7 +104,10 @@ class _InboxPageState extends State<InboxPage> {
         child: ListView.builder(
             itemCount: emails.length,
             itemBuilder: (buildContext, position) {
-              return EmailCard(emails[position]);
+              return GestureDetector(
+                onTap: ()=> _viewEmailDetail(position),
+                child: EmailCard(emails[position]),
+              );
             }),
       ),
       floatingActionButton: FloatingActionButton(
