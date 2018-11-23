@@ -140,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             UserAccountsDrawerHeader(
               currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage("images/google.png"),
+                backgroundImage: AssetImage("assets/images/google.png"),
                 backgroundColor: Colors.white,
               ),
               accountName: Text("Mr. Flutter Thai"),
